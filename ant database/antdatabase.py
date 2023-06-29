@@ -271,13 +271,17 @@ class ViewColony:
         self.requirements_label = tk.Label(self.master, text=f"Requirements: {colony[3]}")
         self.requirements_label.pack()
 
-        self.feed_button = tk.Button(self.master, text=f"Log Feed (last feed: {colony[7]})", command=self.log_feed)
+        next_feed = (datetime.strptime(colony[7],'%Y-%m-%d %H:%M:%S.%f') + timedelta(days=colony[4])).strftime('%Y-%m-%d %H:%M:%S.%f')
+        next_water = (datetime.strptime(colony[8],'%Y-%m-%d %H:%M:%S.%f') + timedelta(days=colony[5])).strftime('%Y-%m-%d %H:%M:%S.%f')
+        next_clean = (datetime.strptime(colony[9],'%Y-%m-%d %H:%M:%S.%f') + timedelta(days=colony[6])).strftime('%Y-%m-%d %H:%M:%S.%f')
+
+        self.feed_button = tk.Button(self.master, text=f"Log Feed (next feed: {next_feed})", command=self.log_feed)
         self.feed_button.pack()
 
-        self.water_button = tk.Button(self.master, text=f"Log Water (last water: {colony[8]})", command=self.log_water)
+        self.water_button = tk.Button(self.master, text=f"Log Water (next water: {next_water})", command=self.log_water)
         self.water_button.pack()
 
-        self.clean_button = tk.Button(self.master, text=f"Log Clean (last clean: {colony[9]})", command=self.log_clean)
+        self.clean_button = tk.Button(self.master, text=f"Log Clean (next clean: {next_clean})", command=self.log_clean)
         self.clean_button.pack()
 
         self.view_logs_button = tk.Button(self.master, text="View Logs", command=self.view_logs)
