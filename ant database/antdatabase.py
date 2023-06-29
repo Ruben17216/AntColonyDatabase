@@ -9,6 +9,9 @@ class Colony:
         self.master = master
         self.master.title("Ant Colony Tracker")
 
+        self.listbox_label = tk.Label(master, text="ID Names:")
+        self.listbox_label.pack()
+
         self.listbox = tk.Listbox(master)
         self.listbox.pack()
 
@@ -100,7 +103,7 @@ class NewColony:
         self.app = app
         self.master.title("New Colony")
 
-        tk.Label(master, text="Name:").grid(row=0, column=0)
+        tk.Label(master, text="ID Name:").grid(row=0, column=0)
         self.name_entry = tk.Entry(master)
         self.name_entry.grid(row=0, column=1)
 
